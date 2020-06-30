@@ -5,7 +5,6 @@ Download  https://drive.google.com/file/d/1rqsSsVO8x9SrcGIQUn87SAvLeVgMtFSf/view
 
 #OUTPUT
 
-![image](https://{drive.google.com/file/d/1QGD1kcyNn94E3hURpal86SBn_Sj5wYRO/view?usp=sharing})
-![image](https://drive.google.com/file/d/1JHKVUHcO0fkmoP5GA_vkDLSPonWSW-7D/view?usp=sharing)
-![image](https://drive.google.com/file/d/1eoZ0-BLDHqX9zOHTm89tCG5uRvAn2b7b/view?usp=sharing)
-
+![1](https://user-images.githubusercontent.com/58854162/86143149-b4c6ff80-bb11-11ea-9193-52ee5e4103d6.png)
+![2](https://user-images.githubusercontent.com/58854162/86143173-bdb7d100-bb11-11ea-93e9-94664e1a1e91.png)
+![3](https://user-images.githubusercontent.com/58854162/86143189-c27c8500-bb11-11ea-896e-3018c6dff506.png)
