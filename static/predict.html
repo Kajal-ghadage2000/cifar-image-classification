@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>predicting Images app</title>
+    <style>
+        * { font-size:18px; }
+	.button {
+		  background-color: white;
+  		  color: black;
+  		  border: 2px solid #ff9999;
+		  font-size: 25px;
+		  padding: 15px 32px;
+		  border-radius: 12px;
+		  transition-duration: 0.4s;
+		  width: 200px;
+		  height: 70px;
+		  
+	}
+	footer {
+    		padding: 27px;
+    		background-color: #263238;
+    		color: #b5b5b5;
+    		border-top: 1px solid #2ca6b0;
+		margin-top: 20px; 
+	}
+
+	footer .left, footer .right, footer .center {
+    		float:left;
+    		width: 33%;
+    		font-size: 17px;
+	}
+
+	footer .right {
+    		text-align: right;   
+	}
+
+	footer .center {
+    		text-align: center;   
+	}
+
+	.container {   
+    		width: 1000px;
+    		margin: 0 auto; 
+    		overflow: hidden;
+	}
+	.button:hover {
+  		  background-color: #ff9999; 
+                  	  color: white;
+	}
+	.column {
+  		float: left;
+  		width: 20%;
+  		padding: 70px;
+	}
+	.center-block {
+  		display: flex;
+  		flex-direction: row;
+  		justify-content: center;
+		margin-top: 10px;
+	}
+	.header {
+  		padding: 60px;
+  		text-align: center;
+  		background: #1abc9c;
+  		color: white;
+	}
+	
+    </style>
+</head>
+<body>  
+<div class="header">
+  <h1>Keras CIFAR Image Classification</h1>
+  <p>Airplane   |   Car   |   Bird   |   Cat   |   Deer   |   Dog   |   Frog   |   Horse   |   Ship   |  Truck</p>
+</div>
+
+
+<div class ="center-block">
+
+  <div class="column" style="background-color:#0000;">
+    <input id="image-selector" type="file">
+  </div>
+
+  <div class="column" style="background-color:#0000;">
+    <button id="predict-button" class="button">Predict</button>
+  </div>
+
+  <div class="column" style="background-color:#CAE7DF;">
+    <p style="font-weight:bold"> Predicted class  :<p/> 
+    <p><span id="class-prediction" style="color:blue"></span></p>
+    <img id="selected-image" width="300px" height="300px" src=""/>
+  </div>
+
+</div>
+
+<footer>
+                <div class="container">
+                    <div class="left">
+                        Copyright &#9400; 2020 kajalsghadage@gmail.com. All Rights Reserved.
+                    </div>
+		    <div class="center">
+                        App Version 2.0
+                    </div>
+                    <div class="right">
+                        support <span style="font-size: x-large;">@ </span>kajalsghadage@gmail.com
+                    </div>
+                </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    let base64Image;
+    $("#image-selector").change(function() {
+        let reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            let dataURL = reader.result;
+
+            $('#selected-image').attr("src", dataURL);
+
+            base64Image = dataURL.replace("data:image/png;base64,","");
+            console.log(base64Image);
+        }
+        reader.readAsDataURL($("#image-selector")[0].files[0]);
+        $("#class-prediction").text("");
+      
+    });
+    
+    $("#predict-button").click(function(){
+        let message = {
+            image: base64Image
+        }
+        console.log(message);
+
+        $.post("http://127.0.0.1:5000/predict", JSON.stringify(message), function(response){
+
+                    	$("#class-prediction").text(response.classpred);
+
+            console.log(response);
+        });
+    });       
+</script>
+</body>
+</html>
